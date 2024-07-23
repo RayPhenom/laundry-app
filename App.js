@@ -1,7 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import HomeScreen from "./screens/HomeScreen";
-import { SliderBox } from " react-native-image-slider-box";
 
 
 export default function App() {
