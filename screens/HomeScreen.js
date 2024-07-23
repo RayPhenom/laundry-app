@@ -13,6 +13,7 @@ import { Feather } from "@expo/vector-icons";
 import * as Location from "expo-location";
 import { MaterialIcons } from "@expo/vector-icons";
 import Carousel from "../components/Carousel";
+import Services from "../components/Services";
 
 const HomeScreen = () => {
   const [displayCurrentAddress, setdisplayCurrentAddress] = useState(
@@ -71,9 +72,38 @@ const HomeScreen = () => {
       }
     }
   };
-
+  const services =[
+    {
+      id:"",
+      Image:"",
+      name:"",
+      quantity:"",
+      price:"",
+    },
+    {
+      id:"",
+      Image:"",
+      name:"",
+      quantity:"",
+      price:"",
+    },
+    {
+      id:"",
+      Image:"",
+      name:"",
+      quantity:"",
+      price:"",
+    },
+    {
+      id:"",
+      Image:"",
+      name:"",
+      quantity:"",
+      price:"",
+    },
+  ]
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{backgroundColor:"#F0F0F0", flex:1 }}>
       <View style={{ flexDirection: "row", alignItems: "center", padding: 10 }}>
         <MaterialIcons name="location-on" size={30} color="#fd5c63" />
         <View>
@@ -105,6 +135,9 @@ const HomeScreen = () => {
         <Feather name="search" size={24} color="#fd5c63" />
       </View>
       <Carousel />
+
+      <Services/>
+
     </SafeAreaView>
   );
 };
