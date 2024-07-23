@@ -1,10 +1,23 @@
-import { StyleSheet, Text, View, SafeAreaView, Alert } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  SafeAreaView,
+  Alert,
+  Pressable,
+  Image,
+  TextInput,
+} from "react-native";
 import React, { useEffect, useState } from "react";
+import { Feather } from "@expo/vector-icons";
 import * as Location from "expo-location";
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from "@expo/vector-icons";
+import Carousel from "../components/Carousel";
 
 const HomeScreen = () => {
-  const [displayCurrentAddress, setdisplayCurrentAddress] = useState("loading your location");
+  const [displayCurrentAddress, setdisplayCurrentAddress] = useState(
+    "loading your location"
+  );
   const [locationServiceEnabled, setLocationServiceEnabled] = useState(false);
 
   useEffect(() => {
@@ -47,7 +60,7 @@ const HomeScreen = () => {
       const { latitude, longitude } = coords;
       let response = await Location.reverseGeocodeAsync({
         latitude,
-        longitude
+        longitude,
       });
 
       //console.log(response);
@@ -61,10 +74,37 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView>
-      <View>
-      <MaterialIcons name="location-on" size={24} color="black" />
-        <Text>{displayCurrentAddress}</Text>
+      <View style={{ flexDirection: "row", alignItems: "center", padding: 10 }}>
+        <MaterialIcons name="location-on" size={30} color="#fd5c63" />
+        <View>
+          <Text style={{ fontSize: 18, fontWeight: "600" }}>Home</Text>
+          <Text>{displayCurrentAddress}</Text>
+        </View>
+
+        <Pressable style={{ marginLeft: "auto", marginRight: 7 }}>
+          <Image
+            style={{ width: 40, height: 40, borderRadius: 20 }}
+            source={{
+              uri: "https://yt3.ggpht.com/yti/ANjgQV8zYWJBa7I1UWG0kgKNpkk4yNjlax9VeeeKjIsoM4JHigAP=s88-c-k-c0x00ffffff-no-rj",
+            }}
+          />
+        </Pressable>
       </View>
+      <View
+        style={{
+          padding: 10,
+          margin: 10,
+          flexDirection: "row",
+          justifyContent: "space-between",
+          borderColor: "#C0C0C0",
+          borderWidth: 0.8,
+          borderRadius: 7,
+        }}
+      >
+        <TextInput placeholder="Search for laundry items" />
+        <Feather name="search" size={24} color="#fd5c63" />
+      </View>
+      <Carousel />
     </SafeAreaView>
   );
 };
